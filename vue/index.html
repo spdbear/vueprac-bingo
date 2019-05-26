@@ -8,15 +8,12 @@
 
   <body>
     <div id="app">
-      <h1>ビンゴ抽選機</h1>
-      <p></p>
-
-      <p id="count">{{listed.length}}</p>
-
+      <h1>Bingo Machine</h1>
+      <p id="count">{{75 - unselectedNumbers.length}} Times</p>
       <button v-on:click="draw">Click</button>
-
+      <p class="bigNumber">{{ drawnNumber }}</p>
       <ul id="numberList">
-        <li v-for="item in list">{{ item }}</li>
+        <li v-for="item in selectedNumbers">{{ item }}</li>
       </ul>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>

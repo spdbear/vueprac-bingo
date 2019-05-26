@@ -1,3 +1,8 @@
+body {
+  background-color: #000;
+  color: #fff;
+}
+
 ul {
   list-style: none;
   display: flex;
@@ -7,12 +12,22 @@ ul {
 li {
   margin: 5px;
   padding: 5px;
-  width: 25px;
-  height: 25px;
+  width: 50px;
+  height: 50px;
+  font-size: 35px;
   text-align: center;
-  background: #dddddd;
+  background-color: #222222;
 }
 
-li:first-child {
-  background: #ccffff;
+li:last-child {
+  background: #666666;
+  font-weight: bolder;
+}
+
+.bigNumber {
+  text-align: center;
+  font-size: 300px;
+  font-weight: bolder;
+  margin: 0;
+  padding: 0;
 }
