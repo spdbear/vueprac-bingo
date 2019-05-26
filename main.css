@@ -1,12 +1,66 @@
+.bigNumber {
+  text-align: center;
+  font-size: 300px;
+  font-weight: bolder;
+  height: 400px;
+  margin: 0;
+  padding: 0;
+}
+
 body {
+  text-align: center;
   background-color: #000;
   color: #fff;
+}
+
+button {
+  height: 44px;
+  width: 400px;
+  appearance: none;
+  outline: none;
+  border: none;
+  appearance: none;
+  background-color: #aaaaaa;
+  border-radius: 6px;
+  box-shadow: 4px #333;
+}
+
+/* 登場退場中に有効 */
+.num-enter-active,
+.num-leave-active {
+  transition: all 2s cubic-bezier(0.1, 1, 0.42, 1);
+}
+/* 退場中に有効 中央に残す */
+.num-leave-active {
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin: 0;
+}
+/* 登場する前と退場した後 */
+.num-enter,
+.num-leave-to {
+  opacity: 0;
+  font-size: 1px;
+}
+
+/* 登場退場中に有効 */
+.v-enter-active,
+.v-leave-active {
+  transition: all 1s ease-in-out;
+  transition-delay: 1s;
+}
+/* 登場する前と退場した後 */
+.v-enter,
+.v-leave-to {
+  opacity: 0;
 }
 
 ul {
   list-style: none;
   display: flex;
   flex-wrap: wrap;
+  margin: 0 20px;
 }
 
 li {
@@ -22,12 +76,4 @@ li {
 li:last-child {
   background: #666666;
   font-weight: bolder;
-}
-
-.bigNumber {
-  text-align: center;
-  font-size: 300px;
-  font-weight: bolder;
-  margin: 0;
-  padding: 0;
 }

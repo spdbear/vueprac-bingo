@@ -9,12 +9,16 @@
   <body>
     <div id="app">
       <h1>Bingo Machine</h1>
-      <p id="count">{{75 - unselectedNumbers.length}} Times</p>
+      <p id="count">{{ 75 - unselectedNumbers.length }} Times</p>
       <button v-on:click="draw">Click</button>
-      <p class="bigNumber">{{ drawnNumber }}</p>
-      <ul id="numberList">
-        <li v-for="item in selectedNumbers">{{ item }}</li>
-      </ul>
+      <transition name="num">
+        <div v-bind:key="drawnNumber" class="bigNumber">
+          {{ drawnNumber }}
+        </div>
+      </transition>
+      <transition-group tag="ul">
+        <li v-bind:key="item" v-for="item in selectedNumbers">{{ item }}</li>
+      </transition-group>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>
     <script src="main.js"></script>
