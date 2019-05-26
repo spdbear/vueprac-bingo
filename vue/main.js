@@ -1,44 +1,42 @@
-var numbers = [];
+var app = new Vue({
+  // マウントする要素
+  el: "#app",
 
-function appendToList(text) {
-  var e = document.getElementById("numberList");
-  var elemLi = document.createElement("li");
-  elemLi.textContent = text;
-  e.appendChild(elemLi);
-}
+  // 用いるデータ
+  data: {
+    list: [],
+    listed: []
+  },
 
-function drawLots(array) {
-  if (array.length != 0) {
-    appendToList(array.pop());
+  // 算出プロパティ
+  // （関数によって算出されたデータ）
+  computed: {},
+
+  // ライフサイクルハック
+  // created: DOM構築直前
+  mounted: function() {
+    function shuffleArray(array) {
+      for (var i = array.length - 1; i > 0; i--) {
+        var r = Math.floor(Math.random() * (i + 1));
+        var tmp = array[i];
+        array[i] = array[r];
+        array[r] = tmp;
+      }
+      return array;
+    }
+    for (var i = 1; i <= 75; i++) {
+      this.listed.push(i);
+    }
+    shuffleArray(this.listed);
+    this.listed = numbers;
+  },
+
+  // このアプリケーションで使うメソッド
+  methods: {
+    draw: function() {
+      if (this.listed.length != 0) {
+        this.list.push(this.listed.pop());
+      }
+    }
   }
-  return array;
-}
-
-function draw() {
-  numbers = drawLots(numbers);
-}
-
-function shuffleArray(array) {
-  for (var i = array.length - 1; i > 0; i--) {
-    var r = Math.floor(Math.random() * (i + 1));
-    var tmp = array[i];
-    array[i] = array[r];
-    array[r] = tmp;
-  }
-  return array;
-}
-
-function createArray() {
-  var numbers = [];
-  for (var i = 1; i <= 75; i++) {
-    numbers.push(i);
-  }
-  return numbers;
-}
-
-window.onload = function() {
-  var button = document.getElementById("draw");
-  numbers = createArray();
-  numbers = shuffleArray(numbers);
-  button.addEventListener("click", draw, false);
-};
+});

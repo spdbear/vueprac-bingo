@@ -11,12 +11,15 @@
       <h1>ビンゴ抽選機</h1>
       <p></p>
 
-      <p id="count"></p>
+      <p id="count">{{listed.length}}</p>
 
-      <button id="draw">Click</button>
+      <button v-on:click="draw">Click</button>
 
-      <ol id="numberList"></ol>
+      <ol id="numberList">
+        <li v-for="item in list">{{ item }}</li>
+      </ol>
     </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>
     <script src="main.js"></script>
   </body>
 </html>
