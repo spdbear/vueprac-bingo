@@ -35,7 +35,7 @@ var app = new Vue({
   methods: {
     draw: function() {
       if (this.listed.length != 0) {
-        this.list.push(this.listed.pop());
+        this.list.unshift(this.listed.pop());
       }
     }
   }

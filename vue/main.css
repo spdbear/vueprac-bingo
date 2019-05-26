@@ -1,0 +1,18 @@
+ul {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+li {
+  margin: 5px;
+  padding: 5px;
+  width: 25px;
+  height: 25px;
+  text-align: center;
+  background: #dddddd;
+}
+
+li:first-child {
+  background: #ccffff;
+}
