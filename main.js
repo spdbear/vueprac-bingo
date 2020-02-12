@@ -11,8 +11,8 @@ var app = new Vue({
   // 算出プロパティ
   // （関数によって算出されたデータ）
   computed: {
-    drawnNumber: function() {
-      var num = "";
+    drawnNumber: function () {
+      let num = "";
       if (this.selectedNumbers.length != 0) {
         num = this.selectedNumbers[this.selectedNumbers.length - 1];
       }
@@ -22,7 +22,7 @@ var app = new Vue({
 
   // ライフサイクルハック
   // mounted: DOM構築直後
-  mounted: function() {
+  mounted: function () {
     // 配列をシャッフル（破壊的変更）
     function shuffleArray(array) {
       for (var i = array.length - 1; i > 0; i--) {
@@ -37,14 +37,41 @@ var app = new Vue({
       this.unselectedNumbers.push(i);
     }
     shuffleArray(this.unselectedNumbers);
+    this.loadNumbers();
   },
 
   // このアプリケーションで使うメソッド
   methods: {
-    draw: function() {
+    draw() {
       if (this.unselectedNumbers.length != 0) {
         this.selectedNumbers.push(this.unselectedNumbers.pop());
+        this.saveNumbers();
       }
+    },
+    // TODO: 番号を引いた履歴をリセットできるようにする
+    reset() {
+
+    },
+    loadNumbers() {
+      const myStorage = localStorage;
+      if (myStorage.getItem("BingoMachineStorage")) {
+        try {
+          const loadData = JSON.parse(myStorage.getItem("BingoMachineStorage"));
+          this.selectedNumbers = loadData.selected;
+          this.unselectedNumbers = loadData.unselected;
+        } catch (e) {
+          myStorage.removeItem("BingoMachineStorage")
+        }
+      }
+    },
+    saveNumbers() {
+      const myStorage = localStorage;
+      const saveData = {
+        "selected": this.selectedNumbers,
+        "unselected": this.unselectedNumbers
+      };
+      myStorage.setItem("BingoMachineStorage", JSON.stringify(saveData));
     }
+
   }
 });
