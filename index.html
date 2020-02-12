@@ -1,26 +1,29 @@
 <!DOCTYPE html>
 <html lang="ja">
-  <head>
-    <meta charset="utf-8" />
-    <title>Bingo</title>
-    <link href="main.css" rel="stylesheet" />
-  </head>
 
-  <body>
-    <div id="app">
-      <h1>Bingo Machine</h1>
-      <p id="count">{{ 75 - unselectedNumbers.length }} Times</p>
-      <button v-on:click="draw">Click</button>
-      <transition name="num">
-        <div v-bind:key="drawnNumber" class="bigNumber">
-          {{ drawnNumber }}
-        </div>
-      </transition>
-      <transition-group tag="ul">
-        <li v-bind:key="item" v-for="item in selectedNumbers">{{ item }}</li>
-      </transition-group>
-    </div>
-    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>
-    <script src="main.js"></script>
-  </body>
+<head>
+  <meta charset="utf-8" />
+  <title>Bingo</title>
+  <link href="main.css" rel="stylesheet" />
+</head>
+
+<body>
+  <div id="app">
+    <h1>Bingo Machine</h1>
+    <p id="count">{{ drawTimes }} Times</p>
+    <button v-on:click="draw">Draw</button>
+    <button v-on:click="restart">Restart</button>
+    <transition name="num">
+      <div v-bind:key="drawnNumber" class="bigNumber">
+        {{ drawnNumber }}
+      </div>
+    </transition>
+    <transition-group tag="ul">
+      <li v-bind:key="item" v-for="item in selectedNumbers">{{ item }}</li>
+    </transition-group>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>
+  <script src="main.js"></script>
+</body>
+
 </html>

@@ -23,6 +23,7 @@ button {
   background-color: #aaaaaa;
   border-radius: 6px;
   box-shadow: 4px #333;
+  margin: 5px 5px 5px 5px;
 }
 
 /* 登場退場中に有効 */
