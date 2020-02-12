@@ -73,12 +73,10 @@ var app = new Vue({
           this.selectedNumbers = loadData.selected;
           this.unselectedNumbers = loadData.unselected;
         } catch (e) {
-          const loadData = {
-            "selected": this.selectedNumbers,
-            "unselected": this.unselectedNumbers
-          };
-          myStorage.setItem("BingoMachineStorage", JSON.stringify(loadData));
+          this.init();
         }
+      } else {
+        this.init();
       }
     },
 
