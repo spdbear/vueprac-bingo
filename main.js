@@ -33,21 +33,12 @@ var app = new Vue({
   methods: {
     init() {
       // 配列をシャッフル（破壊的変更）
-      function shuffleArray(array) {
-        for (var i = array.length - 1; i > 0; i--) {
-          var r = Math.floor(Math.random() * (i + 1));
-          var tmp = array[i];
-          array[i] = array[r];
-          array[r] = tmp;
-        }
-        return array;
-      }
-      this.selectedNumbers.length = 0;
-      this.unselectedNumbers.length = 0;
+      this.selectedNumbers.splice(0);
+      this.unselectedNumbers.splice(0);
       for (var i = 1; i <= 75; i++) {
         this.unselectedNumbers.push(i);
       }
-      shuffleArray(this.unselectedNumbers);
+      this.shuffleArray(this.unselectedNumbers);
     },
 
     draw() {
@@ -55,6 +46,16 @@ var app = new Vue({
         this.selectedNumbers.push(this.unselectedNumbers.pop());
         this.saveNumbers();
       }
+    },
+
+    shuffleArray(array) {
+      for (var i = array.length - 1; i > 0; i--) {
+        var r = Math.floor(Math.random() * (i + 1));
+        var tmp = array[i];
+        array[i] = array[r];
+        array[r] = tmp;
+      }
+      return array;
     },
 
     // 番号を引いた履歴をリセット
