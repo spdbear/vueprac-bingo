@@ -14,7 +14,7 @@ var app = new Vue({
     drawnNumber: function () {
       let num = "";
       if (this.selectedNumbers.length != 0) {
-        num = this.selectedNumbers[this.selectedNumbers.length - 1];
+        num = this.selectedNumbers[0];
       }
       return num;
     },
@@ -43,7 +43,7 @@ var app = new Vue({
 
     draw() {
       if (this.unselectedNumbers.length != 0) {
-        this.selectedNumbers.push(this.unselectedNumbers.pop());
+        this.selectedNumbers.unshift(this.unselectedNumbers.pop());
         this.saveNumbers();
       }
     },

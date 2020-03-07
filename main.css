@@ -3,14 +3,13 @@
   font-size: 300px;
   font-weight: bolder;
   height: 400px;
-  margin: 0;
   padding: 0;
 }
 
 body {
   text-align: center;
-  background-color: #000;
-  color: #fff;
+  background-color: #222;
+  color: #eee;
 }
 
 button {
@@ -20,16 +19,17 @@ button {
   outline: none;
   border: none;
   appearance: none;
-  background-color: #aaaaaa;
+  background-color: #aaa;
   border-radius: 6px;
   box-shadow: 4px #333;
+  font-size: 20px;
   margin: 5px 5px 5px 5px;
 }
 
 /* 登場退場中に有効 */
 .num-enter-active,
 .num-leave-active {
-  transition: all 1s cubic-bezier(0.1, 1, 0.42, 1);
+  transition: all 0.75s cubic-bezier(0.1, 1, 0.42, 1);
 }
 
 /* 退場中に有効 中央に残す */
@@ -50,8 +50,8 @@ button {
 /* 登場退場中に有効 */
 .v-enter-active,
 .v-leave-active {
-  transition: all 0.3s ease-in-out;
-  transition-delay: 0.5s;
+  transition: all 0.75s cubic-bezier(0.1, 1, 0.42, 1);
+  transition-delay: 0.3s;
 }
 
 /* 登場する前と退場した後 */
@@ -60,11 +60,16 @@ button {
   opacity: 0;
 }
 
+/* 登場退場中に有効 */
+.v-move {
+  transition: all 0.75s cubic-bezier(0.1, 1, 0.42, 1);
+}
+
 ul {
   list-style: none;
   display: flex;
   flex-wrap: wrap;
-  margin: 0 20px;
+  margin: 0 10px;
 }
 
 li {
@@ -74,10 +79,10 @@ li {
   height: 50px;
   font-size: 35px;
   text-align: center;
-  background-color: #222222;
+  background-color: #444;
 }
 
-li:last-child {
-  background: #666666;
+li:first-child {
+  background: #888;
   font-weight: bolder;
 }
